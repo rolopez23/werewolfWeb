@@ -27,6 +27,17 @@ class Village {
       this.valid = isValidVillage(village, this.eyes);
     }
   }
+
+  getData() {
+    const data = {};
+    data.roleList = this.roleList;
+    data.direwolf = this.direwolf;
+    data.thirdParty = this.thirdParty;
+    data.werewolves = this.werewolves;
+    data.specialWerewolves = this.specialWerewolves;
+    return data;
+  }
+
   generateVillage() {
     let wildcard = null;
     let specials = [];
@@ -76,7 +87,7 @@ class Village {
       specials.push(specialRoles[indices[i]]);
     }
 
-    return [wildcard].concat(specials).concat(specialWerewolves);
+    return wildcard ? [wildcard].concat(specials).concat(specialWerewolves) : [].concat(specials).concat(specialWerewolves);
   }
   // generateAllValidVillages() {
   //   let testedVillages = [];
@@ -134,8 +145,9 @@ class Village {
   // }
 }
 
-let test = new Village(19);
+let test = new Village(10);
 console.log(test);
+// console.log(test.roleList, typeof test)
 // // console.log(roleList.werewolfSupport);
 // let village = test.generateVillage();
 // console.log(isValidVillage(village, test.eyes));
@@ -143,3 +155,4 @@ console.log(test);
 // console.log(test.specialWerewolves);
 
 // export default Village;
+module.exports = Village;
