@@ -16,7 +16,10 @@ const isValidVillage = (roles, eyes) => {
   const eyesTest = villageEyes === eyes;
   const seerTest = requiresSeer > 0 === seer;
   const protectorTest = protectors <= 1;
+  // console.log(eyes, villageEyes, protectors, requiresSeer);
+  // console.log(eyesTest, protectorTest, seerTest);
   return eyesTest && seerTest && protectorTest;
 };
 
-export default isValidVillage;
+// export default isValidVillage;
+module.exports = isValidVillage;
