@@ -1,16 +1,29 @@
 // import roleList from '../currentRuleSets/roles.js';
 const roleList = require('../currentRuleSets/roles.js');
 const isValidVillage = require('./validVillage');
+const getRole = require('./getRole.js');
 
+// Creates a village taking in four variables, players is an int
+// allowIndependants is a boolean, rolesIncluded is an array of roles
+// which is another array with element 0 being the team and 1 being the name
+// rolesExcluded is the same and not implemented yet.
 class Village {
-  constructor(players, allowIndependants = false) {
+  constructor(players, allowIndependants = false, rolesIncluded = []) {
+    // Game logic werewolves are players divided by 4
     this.werewolves = Math.floor(players / 4);
+    // Game logic special villagers equal players divided by 4
     this.specialVillagers = Math.floor((players + 1) / 4);
+    // Eyes is always villagers less 1
     this.eyes = this.specialVillagers - 1;
+    // Direwolves on even player count
     this.direwolf = players % 2 === 0 ? 1 : 0;
-    this.specialWerewolves = Math.floor(this.werewolves / 2) - this.direwolf;
+    // One half the werewolves are special or direwolves
+    this.specialWerewolves = Math.ceil(this.werewolves / 2) - this.direwolf;
+    // Werewolf Support if players mod 4 is three.
     this.werewolfSupport = players % 4 === 3 ? 1 : 0;
+    // Third Party if players mod 4 is 2.
     this.thirdParty = players % 4 === 2 ? 1 : 0;
+    // Villagers is the remainder
     this.villagers =
       players -
       this.specialVillagers -
@@ -20,6 +33,32 @@ class Village {
     // includes only optional roles.
     this.roleList = [];
     this.allowIndependant = allowIndependants;
+    // First add in new roles
+    for (let i = 0; i < rolesIncluded.length; i++) {
+      // get role
+      let role = getRole(rolesIncluded[i][1], rolesIncluded[i][0]);
+      // place in bucket
+      let requiredSpecials = [];
+      let requiredSpecialWerewolves = [];
+      let requiredWildcard = null;
+      switch (role.roleType) {
+        case 'teamSwitcher':
+          requiredWildcard = role;
+          break;
+        case 'specialVillager':
+          requiredSpecials.push(role);
+          break;
+        case 'specialWerewolf':
+          requiredSpecialWerewolves.push(role);
+          break;
+        case 'werewolfSupport':
+          requiredWildcard = role;
+          break;
+      }
+      // return buckets
+    }
+
+    // Make roles invalid and generate village until
     this.valid = false;
     while (this.valid === false) {
       let village = this.generateVillage();
@@ -28,6 +67,15 @@ class Village {
     }
   }
 
+  randomVillage(eyes) {
+    let valid = false;
+    while (this.valid === false) {
+      let village = this.generateVillage();
+      valid = isValidVillage(village, eyes);
+    }
+  }
+
+  // function to access data on the village.
   getData() {
     const data = {};
     data.roleList = this.roleList;
@@ -38,12 +86,21 @@ class Village {
     return data;
   }
 
-  generateVillage() {
+  // Creates all roles for a village based on the current number
+  // roles are objects
+  generateVillage(
+    requiredSpecials = [],
+    requiredSpecialWerewolves = [],
+    requiredWildcard = null,
+  ) {
+    // Initiate everything to passed in values
     let wildcard = null;
-    let specials = [];
-    let specialWerewolves = [];
+    let specials = requiredSpecials;
+    let specialWerewolves = requiredSpecialWerewolves;
     let floatBucket = null;
 
+    // Set wildcard to be teamSweitcher or werewolfSupport
+    // based on village size
     if (this.thirdParty) {
       floatBucket = 'teamSwitcher';
     } else if (this.werewolfSupport) {
@@ -55,6 +112,7 @@ class Village {
       let index = Math.floor(Math.random() * options.length);
       wildcard = options[index];
     }
+    //pull role list
     const wolves = roleList.specialWerewolf;
     let indices = [];
     for (let i = 0; i < this.specialWerewolves; i++) {
@@ -87,66 +145,14 @@ class Village {
       specials.push(specialRoles[indices[i]]);
     }
 
-    return wildcard ? [wildcard].concat(specials).concat(specialWerewolves) : [].concat(specials).concat(specialWerewolves);
+    return wildcard
+      ? [wildcard].concat(specials).concat(specialWerewolves)
+      : [].concat(specials).concat(specialWerewolves);
   }
-  // generateAllValidVillages() {
-  //   let testedVillages = [];
-  //   let villages = [];
-  //   // evalulate third team cases
-  //   let floatBucket = null;
-  //   if (this.thirdParty) {
-  //     floatBucket = 'teamSwitcher';
-  //   } else if (this.werewolfSupport) {
-  //     floatBucket = 'werewolfSupport';
-  //   }
-  //   // Add third team cases
-  //   if (floatBucket !== null) {
-  //     const options = roleList[floatBucket];
-  //     for (let i = 0; i < options.length; i++) {
-  //       const village = [];
-  //       const role = Object.keys(options[i])[0];
-  //       village.push(role);
-  //       villages.push(village);
-  //     }
-  //   }
-  //   // Add Werewolf Specials
-  //   let newVillages = [];
-  //   let specialWerewolves = roleList.specialWerewolf;
-  //   // console.log(specialWerewolves.length, villages.length);
-  //   for (let i = 0; i < this.specialWerewolves; i++) {
-  //     for (let j = 0; j < villages.length; j++) {
-  //       let village = villages[j];
-  //       for (let k = 0; k < specialWerewolves.length; k++) {
-  //         let werewolf = Object.keys(roleList.specialWerewolf[k])[0];
-  //         if (village.indexOf(werewolf) === -1) {
-  //           newVillages.push(village.concat(werewolf));
-  //         }
-  //       }
-  //     }
-  //     villages = newVillages;
-  //     newVillages = [];
-  //   }
-  //   let specialVillagers = roleList.specialVillager;
-  //   for (let i = 0; i < this.specialVillagers; i++) {
-  //     for (let j = 0; j < villages.length; j++) {
-  //       let village = villages[j];
-  //       for (let k = 0; k < specialVillagers.length; k++) {
-  //         let special = Object.keys(specialVillagers[k])[0];
-  //         if (village.indexOf(special) === -1) {
-  //           newVillages.push(village.concat(special));
-  //         }
-  //       }
-  //     }
-  //     villages = newVillages;
-  //     newVillages = [];
-  //   }
-
-  //   return villages;
-  // }
 }
 
-let test = new Village(10);
-console.log(test);
+// let test = new Village(10);
+// // console.log(test);
 // console.log(test.roleList, typeof test)
 // // console.log(roleList.werewolfSupport);
 // let village = test.generateVillage();

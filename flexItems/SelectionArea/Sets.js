@@ -1,11 +1,9 @@
 import React from 'react';
-import { View, Text } from 'react-native';
+import {View, Text} from 'react-native';
 
-const Sets = () => (
-  <View style={{
-    flex: .4, 
-    flexDirection: "row"}}>
-    <Text>ExtremeWW</Text>
+const Sets = ({styles}) => (
+  <View style={styles.sets}>
+    <Text style={[styles.wolfTitle, styles.shadow]}>ExtremeWW</Text>
   </View>
 );
 
