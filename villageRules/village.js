@@ -3,6 +3,7 @@ const roleList = require('../currentRuleSets/roles.js');
 const isValidVillage = require('./validVillage');
 const getRole = require('./getRole.js');
 
+
 // Creates a village taking in four variables, players is an int
 // allowIndependants is a boolean, rolesIncluded is an array of roles
 // which is another array with element 0 being the team and 1 being the name
@@ -34,29 +35,29 @@ class Village {
     this.roleList = [];
     this.allowIndependant = allowIndependants;
     // First add in new roles
-    for (let i = 0; i < rolesIncluded.length; i++) {
-      // get role
-      let role = getRole(rolesIncluded[i][1], rolesIncluded[i][0]);
-      // place in bucket
-      let requiredSpecials = [];
-      let requiredSpecialWerewolves = [];
-      let requiredWildcard = null;
-      switch (role.roleType) {
-        case 'teamSwitcher':
-          requiredWildcard = role;
-          break;
-        case 'specialVillager':
-          requiredSpecials.push(role);
-          break;
-        case 'specialWerewolf':
-          requiredSpecialWerewolves.push(role);
-          break;
-        case 'werewolfSupport':
-          requiredWildcard = role;
-          break;
-      }
+    // for (let i = 0; i < rolesIncluded.length; i++) {
+    //   // get role
+    //   let role = getRole(rolesIncluded[i][1], rolesIncluded[i][0]);
+    //   // place in bucket
+    //   let requiredSpecials = [];
+    //   let requiredSpecialWerewolves = [];
+    //   let requiredWildcard = null;
+    //   switch (role.roleType) {
+    //     case 'teamSwitcher':
+    //       requiredWildcard = role;
+    //       break;
+    //     case 'specialVillager':
+    //       requiredSpecials.push(role);
+    //       break;
+    //     case 'specialWerewolf':
+    //       requiredSpecialWerewolves.push(role);
+    //       break;
+    //     case 'werewolfSupport':
+    //       requiredWildcard = role;
+    //       break;
+    //   }
       // return buckets
-    }
+    // }
 
     // Make roles invalid and generate village until
     this.valid = false;
@@ -83,6 +84,7 @@ class Village {
     data.thirdParty = this.thirdParty;
     data.werewolves = this.werewolves;
     data.specialWerewolves = this.specialWerewolves;
+    data.villages = this.villagers;
     return data;
   }
 

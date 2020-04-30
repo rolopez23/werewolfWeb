@@ -18,7 +18,7 @@ class Players extends Component {
     this.props.updatePlayers(e.target.value);
   }
 
-  
+
 
   render() {
     const {players} = this.state
