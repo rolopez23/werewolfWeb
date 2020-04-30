@@ -1,16 +1,26 @@
+const path = require('path');
+const ENTRY = path.join(__dirname, 'client', 'app','index.jsx')
+const OUTPUT = path.join(__dirname, 'client', 'public')
 module.exports = {
-  //declare entry point file for compiliation
-  //needs to match exactly location of the index.jsx file
-  //Docs: https://webpack.js.org/concepts/#entry
-  entry: __dirname + '/client/app/index.jsx',
+  entry: ENTRY,
   //define loaders that tell babel how to process files
   module: {
-
+    rules: [
+      {
+        test: /\.jsx$/,
+        use: {
+          loader: 'babel-loader',
+          options: {
+            presets: ['@babel/preset-react', '@babel/preset-env']
+          }
+        }
+      }
+    ]
   },
 
   output: {
     filename: 'bundle.js',
-    path: __dirname + '/client/public',
+    path: OUTPUT,
   },
 
 }
