@@ -28,6 +28,7 @@ const BoardDiv = Styled.div`
   height: 50%;
   font-size: 25px;
   padding: 20px 5px;
+  align-self: center;
 `
 
 const RoleDiv = Styled.div`

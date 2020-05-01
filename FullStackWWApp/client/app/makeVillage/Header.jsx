@@ -5,7 +5,7 @@ import HeaderContainer from '../styles/Header.jsx';
 const Header = ({getVillage})=> (
   <HeaderDiv>
     <HeaderContainer>
-      <div>Extreme Werewolf</div>
+      <div>Werewolf Village Creator</div>
       <div onClick={getVillage}>Create Village</div>
     </HeaderContainer>
     

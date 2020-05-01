@@ -36,12 +36,13 @@ class App extends Component {
   }
 
   render() {
+    const {village} = this.state;
     return (
     <AppContainer>
       <Header getVillage={this.getVillage}/>
       <Player updatePlayers={this.updatePlayers}/>
-      <Board village={this.village}/>
-      <Roles />
+      <Board village={village}/>
+      {/* <Roles /> */}
     </AppContainer>
     )
   

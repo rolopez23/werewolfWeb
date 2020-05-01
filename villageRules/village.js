@@ -82,9 +82,10 @@ class Village {
     data.roleList = this.roleList;
     data.direwolf = this.direwolf;
     data.thirdParty = this.thirdParty;
-    data.werewolves = this.werewolves;
+  
     data.specialWerewolves = this.specialWerewolves;
-    data.villages = this.villagers;
+    data.werewolves = this.werewolves - this.direwolf - this.specialWerewolves;
+    data.villagers = this.villagers;
     return data;
   }
 
