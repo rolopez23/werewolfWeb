@@ -14,7 +14,7 @@ const filePath = path.join('..', 'client', 'public');
 const port = 2323;
 //Set up express.static to serve up static files to site
 //Doc reference expressjs.com/en/api.html#express.static
-app.use(express.static('/Users/robertlopez/Desktop/extremeWW2/fullStackWWApp/client/public'));
+app.use(express.static(filePath));
 
 app.get('/village/:players', (req, res)=>{
   console.log(req.params)
