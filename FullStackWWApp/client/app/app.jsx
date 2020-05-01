@@ -29,7 +29,7 @@ class App extends Component {
         this.setState({
           village: results.data,
         })
-        console.log(results.data);
+        // console.log(results.data);
       })
       .catch(error=>{console.error(error)})
       
