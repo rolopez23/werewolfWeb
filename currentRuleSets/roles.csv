@@ -1,0 +1,72 @@
+roleName,id,roleType,set,infoValue,isIndependant,requireSeer,moderatorDifficulty,isProtector,gameSpeed,moderatorText
+Tanner,1,independant,Extreme,-1,1,0,Easy,0,Faster,You hate your job and want to die.
+Auracabra,2,independant,Extreme,0,1,0,Medium,0,Faster,"Hunt for anyone with an aura. If none left, hunt everyone."
+Cult Leader,3,independant,Extreme,0,1,0,Hard,0,Faster,"Induct a new player each night, until everyone is in your cult."
+Hoodlum,4,independant,Extreme,0,1,0,Hard,0,Faster,Choose two players and outlive them.
+Illuminati,5,independant,Extreme,0,1,0,Hard,0,Neutral,"You know everyone’s role, and just need to live to the end."
+Lone Wolf,6,independant,Extreme,0,1,0,Hard,0,Neutral,"Wake with the Werewolves and hunt villagers, but win alone."
+Necromancer (alt),7,independant,Extreme,0,1,0,Hard,0,Faster,Predict one player to die and cause another player to die.
+Vampire,8,independant,Extreme,0,1,0,Hard,0,Faster,
+Chupacabra,9,independant,Extreme,2,1,0,Medium,0,Faster,"Hunt for Werewolves. If none left, hunt everyone"
+Black Cat,10,teamSwitcher,Extreme,0,0,0,Hard,0,Faster,The team that kills you loses their most valuable player.
+Bloody Marianne (Grim Reaper),11,teamSwitcher,Extreme,0,0,0,Hard,0,Faster,The team that kills you becomes your enemy. Seek revenge and kill every night from beyond the grave.
+Blighted,12,teamSwitcher,Extreme,0,0,0,Hard,0,Neutral,"If bitten by a Werewolf, you turn into a Werewolf"
+Copycat ( new Doppelganger),13,teamSwitcher,Extreme,0,0,0,Hard,0,Neutral,"Join the team of another player, and take on their role when they die."
+Flipper ,14,teamSwitcher,Extreme,0,0,0,Hard,0,Neutral,
+Grave Robber,15,teamSwitcher,Extreme,0,0,0,Medium,0,Neutral,"When you should die, steal the identity of another player who will die in your place."
+Nostradamus (alt),16,teamSwitcher,Extreme,0,0,0,Hard,0,Neutral,Predict which team will win and join that team. You can change your mind but it will cost your life.
+Professor Impatience,17,teamSwitcher,Extreme,0,0,0,Hard,0,Faster,"If you are eliminated, players eliminate two players each day and wolves eliminate two players each night for the rest of the game."
+Time Bandit,18,teamSwitcher,Extreme,0,0,0,Very Hard,0,Faster,"Steal time from team that kills you: One minute days for Villagers, or 5 Seconds to kill for Werewolves."
+Investigator ,19,teamSwitcher,Extreme,1,0,0,Hard,0,Neutral,"if you can find a wolf win with the Villagers, if not you help them stay hidden and win with the Werewolves"
+Eye of the Seer,20,specialVillager,Extreme,-1,1,1,Hard,0,Neutral,"When you die, the Seer sees everyone as a Villager."
+Oracle,21,specialVillager,Extreme,1,1,0,Medium,0,Neutral,Once per game learn one player's exact role
+Outcast,22,specialVillager,Extreme,-1,1,1,Hard,0,Neutral,"If you die, Village celebrates!"
+Cupid,23,specialVillager,Extreme,0,0,0,Hard,0,Faster,"Choose two players to fall in love. If one dies, the other dies of heartbreak."
+Cutthroat,24,specialVillager,Extreme,0,1,0,Medium,0,Faster,You may kill a neighbor during the day
+Hunter,25,specialVillager,Extreme,0,1,0,Medium,0,Faster,You carry a gun. When you die you may kill another player.
+Huntress,26,specialVillager,Extreme,0,1,0,Medium,0,Faster,You have a gun and one bullet. You may shoot another player at night.
+Innocent,27,specialVillager,Extreme,0,1,0,Very Hard,0,Faster,"If you die, the next day the village must keep killing players until they kill a Werewolf."
+Influencer (Rabble Rouser),28,specialVillager,Extreme,-1,1,0,Very Hard,0,Neutral,"One extra vote for death while alive, for life when you are dead"
+Magistrate (new Prince),29,specialVillager,Extreme,0,1,0,Hard,0,Neutral,You can veto the decision of one trial per game
+Mayor,30,specialVillager,Extreme,0,1,0,Hard,0,Neutral,Your vote counts twice
+Revealer,31,specialVillager,Extreme,0,1,0,Medium,0,Faster,"You may gamble that you can find a Werewolf. If you are right they die. If you are wrong, you die."
+Robber (Hackmaster/Dr. Helgo),32,specialVillager,Extreme,0,1,0,Medium,0,Neutral,Trade cards with another player.
+Spellcaster (alt),33,specialVillager,Extreme,0,1,0,Hard,0,Neutral,"Everynight silence a player who can not speak, nominate, or vote the next day"
+The Thing,34,specialVillager,Extreme,0,1,0,Medium,0,Neutral,"Tap a neighbor at night, and they will know you are a villager."
+Tough Guy (alt),35,specialVillager,Extreme,0,1,0,Hard,0,Slower,"If attacked at night, you don’t die right away."
+Aura Seer,36,specialVillager,Extreme,1,1,0,Medium,0,Neutral,Learn if players have a role with a plain or special aura.
+Beholder,37,specialVillager,Extreme,1,1,1,Medium,0,Neutral,You know who is the Seer
+Bodyguard,38,specialVillager,Extreme,1,1,0,Hard,1,Slower,Protect players from being killed at night
+Exposer (alt),39,specialVillager,Extreme,1,1,0,Hard,0,Neutral,"Wake every night. One night per game, you may target a player. The next day, that player’s role is exposed."
+Insomniac (alt),40,specialVillager,Extreme,2,1,0,Hard,0,Neutral,Learn if one of your neighbors was awake in the night.
+Mad Bomber,41,specialVillager,Extreme,1,1,0,Medium,0,Faster,"You have a bomb. When you die, you will kill your neighbors to the right or left."
+Soothsayer (Apprentice Mentalist),42,specialVillager,Extreme,1,0,0,Medium,0,Neutral,Learn if two players are on the same team or not
+Priest,43,specialVillager,Extreme,1,1,0,Hard,1,Slower,Bless a player to give them an extra life.
+Reactive Seer,44,specialVillager,Extreme,1,1,-1,Hard,0,Faster,Search for Werewolves at night after each villager is lynched
+Wise Old Man,45,specialVillager,Extreme,1,1,0,Medium,0,Faster,"You know all Special Villagers, but will die after 2 days."
+Warlock (new Witch),46,specialVillager,Extreme,1,1,0,Hard,1,Neutral,You have a potion to bring the dead back to life.
+Leprechaun,47,specialVillager,Extreme,2,1,0,Hard,1,Neutral,You may redirect the Werewolves’ target one player to the right or left.
+Seer,48,specialVillager,Extreme,2,1,0,Medium,0,Neutral,Search for Werewolves at night.
+Wolf Mama (new Mystery Wolf),49,specialWerewolf,Extreme,-2,1,0,Very Hard,0,Neutral,"First two nights, add another Lycan."
+Wolf Man,50,specialWerewolf,Extreme,-1,1,1,Hard,0,Neutral,You are invisible to Seer.
+Guzzle Wolf (apprentice Big Bad Wolf),51,specialWerewolf,Extreme,0,1,0,Hard,0,Faster,"If the village doesn’t kill, you will take an extra kill."
+Dire Wolf (alt),52,specialWerewolf,Extreme,0,1,0,Hard,0,Faster,"You are in love with a villager, but they don’t know it. If they die, you die of heartbreak."
+Hunter Wolf,53,specialWerewolf,Extreme,0,1,0,Easy,0,Faster,"Wake with the wolves. If you are eliminated, you may eliminate any other player."
+Kamikaze Wolf,54,specialWerewolf,Extreme,0,1,1,Hard,0,Faster,"If the Seer views you, both you and the Seer are eliminated."
+Oracle Wolf (alt),55,specialWerewolf,Extreme,0,1,0,Very Hard,0,Neutral,"Wake with the wolves. Each night after a werewolf is killed, you wake again and learn the exact role of one player."
+Pet Wolf,56,specialWerewolf,Extreme,0,1,0,Hard,0,Faster,"You were once the pet of someone in the village. If you die, they will remember and die of heartbreak."
+Prairie Wolf (Jacole),57,specialWerewolf,Extreme,0,1,1,Medium,0,Neutral,"Wake with the wolves. On set-up, and every time a Werewolf dies, choose a player and learn if that player has an Aura."
+Sorcerer Wolf (new Dreamwolf),58,specialWerewolf,Extreme,0,1,1,Hard,0,Slower,"Don’t wake with werewolves until they attack you. Until then, look for the Seer."
+Wolf Cub,59,specialWerewolf,Extreme,0,1,0,Hard,0,Faster,"If you die, the Werewolves will go on a rampage and take an extra kill."
+Wolverine,60,specialWerewolf,Extreme,2,1,0,Hard,0,Neutral,"When you are closest to the kill, the village hears the sound of slashing metallic claws"
+Apprentice Illusionist,61,werewolfSupport,Extreme,-1,0,1,Hard,0,Neutral,"If the Seer sees you, their next view will be opposite"
+Reviler,62,werewolfSupport,Extreme,-1,0,0,Hard,0,Faster,"You may gamble that you can find a Special Villager. If you are right they die. If you are wrong, you die."
+Spawn,63,werewolfSupport,Extreme,-1,0,0,Hard,0,Slower,"If you outlive all the Werewolves, you become the last Werewolf."
+Count Lycanthrope (new Count),64,werewolfSupport,Extreme,0,0,1,Medium,0,Neutral,know how many Werewolves and Seer in each half of the village.
+Dark Empath,65,werewolfSupport,Extreme,0,0,1,Easy,0,Neutral,"Each night, learn if the Seer is adjacent to a wolf."
+Den Mother,66,werewolfSupport,Extreme,0,0,1,Hard,0,Neutral,"You know when the Seer finds a Werewolf, and when Seer is dead"
+Devotee (new Minion),67,werewolfSupport,Extreme,0,0,0,Medium,0,Neutral,Each night learn about one new Werewolf.
+The Mummy (alt),68,werewolfSupport,Extreme,0,0,0,Very Hard,0,Neutral,"Each night, pick a player to be hypnotized. That player will vote the way you do."
+Sorceress,69,werewolfSupport,Extreme,0,0,1,Medium,0,Neutral,Search for the Seer at night.
+Spy,70,werewolfSupport,Extreme,0,0,1,Medium,0,Neutral,"Each night, learn who the Seer viewed, then search for Werewolves"
+The Mummy (alt),71,werewolfSupport,Extreme,0,0,0,Very Hard,0,Neutral,"Each night, pick a player to be hypnotized. That player will vote the way you do."
