@@ -9,7 +9,7 @@ const Village = require('../../villageRules/village.js')
 const app = express();
 
 //generalized path for files
-const filePath = path.join('..', 'client', 'public');
+const filePath = path.join(__dirname, '..', 'client', 'public');
 //declare port
 const port = 2323;
 //Set up express.static to serve up static files to site
