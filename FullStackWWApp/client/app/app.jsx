@@ -13,6 +13,7 @@ class App extends Component {
     this.state = {
       village: null,
       players: 8,
+      createVillage: false,
     }
     this.updatePlayers = this.updatePlayers.bind(this);
     this.getVillage = this.getVillage.bind(this);
@@ -28,6 +29,7 @@ class App extends Component {
       .then(results=> {
         this.setState({
           village: results.data,
+
         })
         // console.log(results.data);
       })

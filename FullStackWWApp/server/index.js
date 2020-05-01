@@ -17,7 +17,7 @@ const port = 2323;
 app.use(express.static(filePath));
 
 app.get('/village/:players', (req, res)=>{
-  console.log(req.params)
+  // console.log(req.params)
   const village = new Village(parseInt(req.params.players));
   res.send(village.getData());
 

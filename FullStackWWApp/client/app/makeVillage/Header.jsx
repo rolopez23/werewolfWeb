@@ -6,7 +6,7 @@ const Header = ({getVillage})=> (
   <HeaderDiv>
     <HeaderContainer>
       <div>Werewolf Village Creator</div>
-      <div onClick={getVillage}>Create Village</div>
+      <div onMouseOver={} onClick={getVillage}>Create Village</div>
     </HeaderContainer>
     
   </HeaderDiv>

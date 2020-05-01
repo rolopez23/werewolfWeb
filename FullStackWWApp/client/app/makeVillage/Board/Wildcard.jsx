@@ -3,7 +3,7 @@ import {ThirdPartyBox, ThirdPartyTitle} from '../../styles/ThirdParty.jsx'
 
 const Wildcard = ({wildcard}) => (
   <ThirdPartyBox>
-    <ThirdPartyTitle>Third Party</ThirdPartyTitle>
+    <ThirdPartyTitle>Team Switcher</ThirdPartyTitle>
     <div>{wildcard.roleName}</div>
   </ThirdPartyBox>
 )
