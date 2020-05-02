@@ -12,4 +12,11 @@ const HeaderContainer = Styled.div`
   padding: 10px, 30px;
 `
 
-export default HeaderContainer;
+const ClickableText = Styled.div`
+  cursor: ${props=> props.isPointer ? "pointer" : "auto"}
+`
+
+export { 
+  HeaderContainer,
+  ClickableText
+}

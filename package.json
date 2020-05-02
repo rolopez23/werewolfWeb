@@ -18,5 +18,6 @@
   "homepage": "https://github.com/rolopez23/werewolfWeb#readme",
   "dependencies": {
     "jest": "^25.5.3"
-  }
+  },
+  "devDependencies": {}
 }

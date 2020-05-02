@@ -14,9 +14,17 @@ class App extends Component {
       village: null,
       players: 8,
       createVillage: false,
+      isPointer: false,
     }
     this.updatePlayers = this.updatePlayers.bind(this);
     this.getVillage = this.getVillage.bind(this);
+    this.toggleMouse = this.toggleMouse.bind(this);
+  }
+
+  toggleMouse() {
+    this.setState({
+      isPointer: !this.state.isPointer,
+    })
   }
 
   updatePlayers(players) {
@@ -38,10 +46,13 @@ class App extends Component {
   }
 
   render() {
-    const {village} = this.state;
+    const {village, isPointer} = this.state;
     return (
     <AppContainer>
-      <Header getVillage={this.getVillage}/>
+      <Header 
+        toggleMouse={this.toggleMouse} 
+        getVillage={this.getVillage}
+        isPointer={isPointer}/>
       <Player updatePlayers={this.updatePlayers}/>
       <Board village={village}/>
       {/* <Roles /> */}
