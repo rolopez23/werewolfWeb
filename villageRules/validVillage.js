@@ -15,10 +15,11 @@ const isValidVillage = (roles, eyes) => {
   }
   const hasCorrectEyes = villageEyes === eyes;
   const hasCorrectSeer = requiresSeer > 0 === seer;
+  const oneSeer = requiresSeer < 0 !== seer;
   const hasCorrectProtectors = protectors <= 1;
   // console.log(eyes, villageEyes, protectors, requiresSeer);
   // console.log(eyesTest, protectorTest, seerTest);
-  return hasCorrectEyes && hasCorrectSeer && hasCorrectProtectors;
+  return hasCorrectEyes && hasCorrectSeer && hasCorrectProtectors && oneSeer;
 };
 
 // export default isValidVillage;
