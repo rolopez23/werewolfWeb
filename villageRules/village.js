@@ -40,7 +40,7 @@ class Village {
     // First add in new roles
     for (let i = 0; i < rolesIncluded.length; i++) {
       // get role
-      console.log(rolesIncluded[i][0], rolesIncluded[i][1])
+      // console.log(rolesIncluded[i][0], rolesIncluded[i][1])
       let role = helpers.role(rolesIncluded[i][0], rolesIncluded[i][1]);
       // place in bucket
       switch (role.roleType) {
@@ -59,6 +59,8 @@ class Village {
         case 'werewolfSupport':
           this.requiredWildcard = role;
           break;
+        case 'independant':
+          this.requiredWildcard = role;
       }
     }
 
@@ -96,16 +98,29 @@ class Village {
     // Set wildcard to be teamSweitcher or werewolfSupport
     // based on village size
     if (this.thirdParty) {
+      if(this.allowIndependants) {
+        floatBucket === 'combined'
+      }
       floatBucket = 'teamSwitcher';
     } else if (this.werewolfSupport) {
       floatBucket = 'werewolfSupport';
     }
     // Add third team cases
-    if (floatBucket !== null) {
-      const options = roleList[floatBucket];
+
+    //If you have the role passed take it!
+    if(this.requiredWildcard) {
+      wildcard = this.requiredWildcard
+    } else if (floatBucket !== null) {
+      let options = null;
+      if (floatBucket === 'combined') {
+        options = roleList.independant.concat(roleList.teamSwitcher);
+      } else {
+        options = roleList[floatBucket];
+      }
       let index = Math.floor(Math.random() * options.length);
       wildcard = options[index];
     }
+    
     //pull role list
     //Whenever you pull a role track its index to prevent duplicates
     const wolves = roleList.specialWerewolf;
