@@ -14,27 +14,48 @@ class App extends Component {
       village: null,
       players: 8,
       createVillage: false,
+      requiredRole: [],
     }
     this.updatePlayers = this.updatePlayers.bind(this);
     this.getVillage = this.getVillage.bind(this);
+    this.updateRequiredRole = this.updateRequiredRole.bind(this);
   }
 
   updatePlayers(players) {
     this.setState({players})
   }
+  //role is an array with team, than role
+  updateRequiredRole(role) {
+    console.log('updating')
+    this.setState({
+      requiredRole: role,
+    })
+  }
 
   getVillage() {
-    const {players} = this.state
-    axios.get(`/village/${players}`)
-      .then(results=> {
-        this.setState({
-          village: results.data,
+    const {players, requiredRole} = this.state
+    console.log('click')
+    if(requiredRole.length < 1) {
+      axios.get(`/village/${players}`)
+        .then(results=> {
+          this.setState({
+            village: results.data,
 
+          })
+          // console.log(results.data);
         })
+        .catch(error=>{console.error(error)})
+    } else {
+        axios.get(`/village/${players}/false/${JSON.stringify(requiredRole)}`)
+        .then(results=> {
+          this.setState({
+            village: results.data,
+
+          })
         // console.log(results.data);
       })
       .catch(error=>{console.error(error)})
-      
+    }
   }
 
   render() {
@@ -44,7 +65,7 @@ class App extends Component {
       <Header getVillage={this.getVillage}/>
       <Player updatePlayers={this.updatePlayers}/>
       <Board village={village}/>
-      {/* <Roles /> */}
+      <Roles update={this.updateRequiredRole}/>
     </AppContainer>
     )
   

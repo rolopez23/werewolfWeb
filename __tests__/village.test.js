@@ -34,7 +34,7 @@ describe('A village conforms to construction guidelines', () => {
 
 describe('A village can be created with a required Seer', () => {
   const village = new Village(13, false, [['specialVillager', 'Seer']]);
-  
+  console.log(village.requiredSpecials)
   test('Village is valid', () => {
   
     expect(village.eyes).toBe(2);

@@ -4,9 +4,9 @@ const enzymePath = path.join(__dirname, 'FullStackWWApp/eznzyme.config.js');
 // https://jestjs.io/docs/en/configuration.html
 
 module.exports = {
-    setupFilesAfterEnv: ["jest-enzyme"],
+    // setupFilesAfterEnv: ["jest-enzyme"],
 
-    testEnvironment: "enzyme",
+    // testEnvironment: "enzyme",
 
   // All imported modules in your tests should be mocked automatically
   // automock: false,

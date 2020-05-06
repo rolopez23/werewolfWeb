@@ -35,7 +35,7 @@ class Village {
     this.roleList = [];
     this.requiredSpecials = [];
     this.requiredSpecialWerewolves = [];
-    this.requitedWildcard = null; 
+    this.requiredWildcard = null; 
     this.allowIndependant = allowIndependants;
     // First add in new roles
     for (let i = 0; i < rolesIncluded.length; i++) {
@@ -71,14 +71,6 @@ class Village {
     }
   }
 
-  randomVillage(eyes) {
-    let valid = false;
-    while (this.valid === false) {
-      let village = this.generateVillage();
-      valid = isValidVillage(village, eyes);
-    }
-  }
-
   // function to access data on the village.
   getData() {
     const data = {};
@@ -94,15 +86,11 @@ class Village {
 
   // Creates all roles for a village based on the current number
   // roles are objects
-  generateVillage(
-    requiredSpecials = [],
-    requiredSpecialWerewolves = [],
-    requiredWildcard = null,
-  ) {
+  generateVillage() {
     // Initiate everything to passed in values
-    let wildcard = requiredWildcard;
-    let specials = requiredSpecials;
-    let specialWerewolves = requiredSpecialWerewolves;
+    let wildcard = null;
+    let specials = [];
+    let specialWerewolves = [];
     let floatBucket = null;
 
     // Set wildcard to be teamSweitcher or werewolfSupport
@@ -123,9 +111,9 @@ class Village {
     const wolves = roleList.specialWerewolf;
     let indices = [];
     //Add in all the specialWerewolves
-    for (let i = 0; i < requiredSpecialWerewolves.length; i++) {
-      const wolf = specialWerewolves[i];
-      indices.push(getIndex('specialWerewolf',wolf.roleName))
+    for (let i = 0; i < this.requiredSpecialWerewolves.length; i++) {
+      const wolf = this.requiredSpecialWerewolves[i];
+      indices.push(helpers.index('specialWerewolf',wolf.roleName))
     }
 
 
@@ -144,9 +132,17 @@ class Village {
     for (let i = 0; i < indices.length; i++) {
       specialWerewolves.push(wolves[indices[i]]);
     }
+    //reset indices
+    indices = [];
+
+    //Add in all the specialVillagers
+    for (let i = 0; i < this.requiredSpecials.length; i++) {
+      const role = this.requiredSpecials[i];
+      indices.push(helpers.index('specialVillager', role.roleName))
+    }
 
     const specialRoles = roleList.specialVillager;
-    indices = [];
+   
     for (let i = 0; i < this.specialVillagers; i++) {
       let indexExists = true;
       while (indexExists) {
@@ -167,10 +163,8 @@ class Village {
   }
 }
 
-// let test = new Village(10);
-// // console.log(test);
+
 // console.log(test.roleList, typeof test)
-// // console.log(roleList.werewolfSupport);
 // let village = test.generateVillage();
 // console.log(isValidVillage(village, test.eyes));
 // console.log(test.specialWerewolves);

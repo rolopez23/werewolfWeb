@@ -9,4 +9,4 @@ const getEyes = roleList => {
   return eyes;
 };
 
-export default getEyes;
+module.exports = getEyes;
