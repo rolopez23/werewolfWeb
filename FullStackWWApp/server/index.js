@@ -21,9 +21,12 @@ app.get('/village/:players/:allowIndependants/:required', (req, res)=>{
   let {players, allowIndependants, required} = req.params;
   allowIndependants = JSON.parse(allowIndependants)
   required = JSON.parse(required);
+  let requirements = [];
+  requirements.push(required)
   players = JSON.parse(players);
-  console.log(required)
-  const village = new Village(players, allowIndependants, [required]);
+  // console.log(requirements)
+  const village = new Village(players, allowIndependants, requirements);
+
   res.send(village);
 })
 

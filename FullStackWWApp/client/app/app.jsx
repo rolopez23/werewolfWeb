@@ -22,11 +22,11 @@ class App extends Component {
   }
 
   updatePlayers(players) {
+    players = parseInt(players, 10)
     this.setState({players})
   }
   //role is an array with team, than role
   updateRequiredRole(role) {
-    console.log('updating')
     this.setState({
       requiredRole: role,
     })
@@ -59,13 +59,13 @@ class App extends Component {
   }
 
   render() {
-    const {village} = this.state;
+    const {village, players} = this.state;
     return (
     <AppContainer>
       <Header getVillage={this.getVillage}/>
       <Player updatePlayers={this.updatePlayers}/>
       <Board village={village}/>
-      <Roles update={this.updateRequiredRole}/>
+      <Roles players={players} update={this.updateRequiredRole}/>
     </AppContainer>
     )
   

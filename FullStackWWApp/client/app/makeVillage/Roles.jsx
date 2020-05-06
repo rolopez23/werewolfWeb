@@ -15,7 +15,6 @@ class Roles extends Component {
   }
 
   handleChange(e) {
-    console.log('changing')
     this.setState({
       [e.target.name]: e.target.value,
     });
@@ -39,6 +38,12 @@ class Roles extends Component {
         break;
       case 'Team Switcher':
         team = 'teamSwitcher';
+        break;
+      case 'Werewolf Support':
+        team = 'werewolfSupport';
+        break;
+      case 'Third Party': 
+        team = 'independant';
         break;
       case 'No Required Role':
         this.setState({
@@ -67,6 +72,7 @@ class Roles extends Component {
 
   render() {
     const {team, roles} = this.state;
+    const {players} = this.props
     let secondSelect = null;
     if (team !== 'No Required Role') {
       secondSelect = (
@@ -74,6 +80,17 @@ class Roles extends Component {
           {roles.map(role=><option>{role}</option>)}
         </select>
       )
+    }
+    
+    const specialWolves = players !== 8 && players !== 10;
+  
+    let wildcard = null; 
+    let independants = null;
+    if (players % 4 === 3) {
+      wildcard = (<option>Werewolf Support</option>)
+    } else if (players % 4 === 2) {
+      wildcard = (<option>Team Switcher</option>)
+      independants = (<option>Third Party</option>)
     }
 
 
@@ -83,8 +100,9 @@ class Roles extends Component {
         <select onChange={this.handleChange} name="team">
           <option>No Required Role</option>
           <option>Special Villagers</option>
-          <option>Special Werewolves</option>
-          <option>Team Switcher</option>
+          {specialWolves ? <option>Special Werewolves</option> : null}
+          {wildcard}
+          {independants}
         </select>
         {secondSelect}
       </div>

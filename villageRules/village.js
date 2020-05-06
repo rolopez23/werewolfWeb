@@ -54,7 +54,7 @@ class Village {
           this.requiredSpecials.push(role);
           break;
         case 'specialWerewolf':
-          this,requiredSpecialWerewolves.push(role);
+          this.requiredSpecialWerewolves.push(role);
           break;
         case 'werewolfSupport':
           this.requiredWildcard = role;
