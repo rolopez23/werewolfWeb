@@ -1,9 +1,9 @@
 import React from 'react';
 import {BoardDiv} from '../styles/app.jsx';
-import NoVillage from '../styles/Default.jsx';
+import {NoVillage} from '../styles/Default.jsx';
 import WolfTeam from './Board/WolfTeam.jsx'
 import VillageTeam from './Board/VillageTeam.jsx'
-import BoardDisplay from '../styles/Board.jsx';
+import BoardDisplay from '../styles/makeVillage/Board.jsx';
 import Wildcard from './Board/Wildcard.jsx'
 
 const Board = ({village}) => {
@@ -17,7 +17,7 @@ const Board = ({village}) => {
           direwolf={village.direwolf}
           specialWolves = {village.roleList.filter((role) =>
           role.roleType==='specialWerewolf')}
-          werewolves={village.werewolves}
+          werewolves={village.werewolves - village.direwolf - village.specialWerewolves}
           werewolfSupport={village.roleList.filter((role) =>
             role.roleType==='werewolfSupport')}/>
         <VillageTeam 

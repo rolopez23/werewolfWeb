@@ -1,6 +1,6 @@
 import React from 'react';
 import {HeaderDiv} from '../styles/app.jsx';
-import {HeaderContainer, ClickableText} from '../styles/Header.jsx';
+import {HeaderContainer, ClickableText} from '../styles/makeVillage/Header.jsx';
 
 const Header = ({getVillage, toggleMouse, isPointer})=> (
   <HeaderDiv>

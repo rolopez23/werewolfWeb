@@ -1,5 +1,5 @@
 import React from 'react';
-import {ThirdPartyBox, ThirdPartyTitle} from '../../styles/ThirdParty.jsx'
+import {ThirdPartyBox, ThirdPartyTitle} from '../../styles/makeVillage/ThirdParty.jsx'
 
 const Wildcard = ({wildcard}) => (
   <ThirdPartyBox>

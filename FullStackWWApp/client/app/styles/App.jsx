@@ -4,6 +4,7 @@ import Styled from 'styled-components';
 const AppContainer = Styled.div`
   display: flex;
   flex-direction: column;
+  flex-wrap: no-wrap;
   font-family: "Libre Baskerville", serif; 
   text-shadow: 0 1px 1px #fff;
   width: 100%;

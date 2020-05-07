@@ -1,6 +1,8 @@
 import React, {Component} from 'react';
 import axios from 'axios';
 
+import {Select} from '../styles/Default.jsx';
+
 class Roles extends Component {
   constructor(props) {
     super(props)
@@ -9,20 +11,24 @@ class Roles extends Component {
       teamSend: null,
       roles: [],
       role: null,
-
+      allowIndependants: false,
     }
     this.handleChange = this.handleChange.bind(this)
   }
 
   handleChange(e) {
+
+    const {target} = e;
+    const value = target.name === "allowIndependants" ? target.checked : target.value;
+    console.log(value)
     this.setState({
-      [e.target.name]: e.target.value,
-    });
-    if(e.target.name === 'team') {
-      this.getRoles(e.target.value)
+      [target.name]: value,
+    },()=>{console.log(this.state.allowIndependants)});
+    if(target.name === 'team') {
+      this.getRoles(value)
     }
-    if(e.target.name === 'role') {
-      this.props.update([this.state.teamSend, e.target.value])
+    if(target.name === 'role') {
+      this.props.update([this.state.teamSend, value])
     }
 
   }
@@ -71,14 +77,14 @@ class Roles extends Component {
   }
 
   render() {
-    const {team, roles} = this.state;
+    const {team, roles, allowIndependants} = this.state;
     const {players} = this.props
     let secondSelect = null;
     if (team !== 'No Required Role') {
       secondSelect = (
-        <select name="role" onChange={this.handleChange}>
+        <Select name="role" onChange={this.handleChange}>
           {roles.map(role=><option>{role}</option>)}
-        </select>
+        </Select>
       )
     }
     
@@ -96,15 +102,22 @@ class Roles extends Component {
 
     return (
       <div>
-        <div>Required Role</div>
-        <select onChange={this.handleChange} name="team">
+        <div>Design your village!</div>
+        <Select onChange={this.handleChange} name="team">
           <option>No Required Role</option>
           <option>Special Villagers</option>
           {specialWolves ? <option>Special Werewolves</option> : null}
           {wildcard}
           {independants}
-        </select>
+        </Select>
         {secondSelect}
+        <input 
+          type="checkbox" 
+          name="allowIndependants" 
+          value={allowIndependants}
+          onChange={this.handleChange}/>
+        <label htmlFor="allowIndependants">Play with Independants?</label>
+
       </div>
     )
   }

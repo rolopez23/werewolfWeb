@@ -1,5 +1,5 @@
 import React, {Component} from 'react';
-import {PlayerContainer, PlayerInput, PlayerLabel} from '../styles/Players.jsx';
+import {PlayerContainer, PlayerInput, PlayerLabel} from '../styles/makeVillage/Players.jsx';
 
 
 class Players extends Component {

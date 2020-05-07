@@ -133,7 +133,7 @@ class Village {
 
 
     //generate randomNumbers
-    for (let i = 0; i < this.specialWerewolves; i++) {
+    for (let i = this.requiredSpecialWerewolves.length; i < this.specialWerewolves; i++) {
       let indexExists = true;
       while (indexExists) {
         let index = Math.floor(Math.random() * wolves.length);
@@ -158,7 +158,7 @@ class Village {
 
     const specialRoles = roleList.specialVillager;
    
-    for (let i = 0; i < this.specialVillagers; i++) {
+    for (let i = this.requiredSpecials.length; i < this.specialVillagers; i++) {
       let indexExists = true;
       while (indexExists) {
         let index = Math.floor(Math.random() * specialRoles.length);

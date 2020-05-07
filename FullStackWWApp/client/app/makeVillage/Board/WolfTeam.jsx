@@ -1,5 +1,5 @@
 import React from 'react';
-import {WolfBox, WolfTitle} from '../../styles/Wolf.jsx'
+import {WolfBox, WolfTitle} from '../../styles/makeVillage/Wolf.jsx'
 
 const WolfTeam = ({direwolf, specialWolves, werewolves, werewolfSupport}) => (
   <WolfBox>
