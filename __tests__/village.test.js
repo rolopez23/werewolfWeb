@@ -107,3 +107,22 @@ describe('A village can be created with a Tanner', () => {
     expect(village.roleList.filter(role => role.roleName === 'Tanner').length).toBe(1);
   })
 });
+
+describe('A village can be created with the Eye of the Seer', () => {
+  const village = new Village(8, false, [['specialVillager', 'Eye of the Seer']]);
+ 
+  test('Village is valid', () => {
+
+    expect(village.eyes).toBe(1);
+    expect(village.werewolfSupport).toBe(0);
+    expect(village.thirdParty).toBe(0);
+    expect(village.villagers).toBe(4);
+    expect(village.direwolf).toBe(1);
+    expect(village.specialWerewolves).toBe(0);
+    expect(village.roleList.length).toBe(2)
+  });
+
+  test('Village contains an Eye of the Seer', () => {
+    expect(village.roleList.filter(role => role.roleName === 'Eye of the Seer').length).toBe(1);
+  })
+});

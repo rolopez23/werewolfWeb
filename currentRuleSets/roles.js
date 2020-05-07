@@ -594,7 +594,7 @@ const roleList = {
       set: 'Extreme',
       infoValue: '1',
       isIndependant: '1',
-      requireSeer: '-1',
+      requireSeer: '0',
       moderatorDifficulty: 'Hard',
       isProtector: '0',
       gameSpeed: 'Faster',
