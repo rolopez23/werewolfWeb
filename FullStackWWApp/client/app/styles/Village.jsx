@@ -25,6 +25,6 @@ margin: 5px;
 `
 
 export {
-VillageBox,
-VillageTitle
+  VillageBox,
+  VillageTitle
 };

@@ -14,11 +14,25 @@ class App extends Component {
       village: null,
       players: 8,
       createVillage: false,
+<<<<<<< HEAD
       requiredRole: [],
     }
     this.updatePlayers = this.updatePlayers.bind(this);
     this.getVillage = this.getVillage.bind(this);
     this.updateRequiredRole = this.updateRequiredRole.bind(this);
+=======
+      isPointer: false,
+    }
+    this.updatePlayers = this.updatePlayers.bind(this);
+    this.getVillage = this.getVillage.bind(this);
+    this.toggleMouse = this.toggleMouse.bind(this);
+  }
+
+  toggleMouse() {
+    this.setState({
+      isPointer: !this.state.isPointer,
+    })
+>>>>>>> mouseHover
   }
 
   updatePlayers(players) {
@@ -59,10 +73,17 @@ class App extends Component {
   }
 
   render() {
+<<<<<<< HEAD
     const {village, players} = this.state;
+=======
+    const {village, isPointer} = this.state;
+>>>>>>> mouseHover
     return (
     <AppContainer>
-      <Header getVillage={this.getVillage}/>
+      <Header 
+        toggleMouse={this.toggleMouse} 
+        getVillage={this.getVillage}
+        isPointer={isPointer}/>
       <Player updatePlayers={this.updatePlayers}/>
       <Board village={village}/>
       <Roles players={players} update={this.updateRequiredRole}/>

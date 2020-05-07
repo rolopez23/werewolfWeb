@@ -16,6 +16,7 @@
     "url": "https://github.com/rolopez23/werewolfWeb/issues"
   },
   "homepage": "https://github.com/rolopez23/werewolfWeb#readme",
+<<<<<<< HEAD
   "dependencies": {},
   "devDependencies": {
     "babel-jest": "^26.0.0",
@@ -27,4 +28,10 @@
     "jest-enzyme": "^7.1.2",
     "react-test-renderer": "^16.13.1"
   }
+=======
+  "dependencies": {
+    "jest": "^25.5.3"
+  },
+  "devDependencies": {}
+>>>>>>> mouseHover
 }
