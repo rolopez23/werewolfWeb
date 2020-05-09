@@ -18,7 +18,7 @@ const PlayerContainer = Styled.div`
 
 const PlayerInput = Styled.input`
   height: 30px;
-  width: 35px;
+  width: 100px;
   font-family: "Libre Baskerville", serif; 
   text-shadow: 0 1px 1px #fff;
   align-self: center;
@@ -32,10 +32,16 @@ const PlayerLabel = Styled.label`
   align-self: center;
   font-size: 20px;
   margin-right: 20px;
+  margin-left: 20px;
+`
+
+const Text = Styled.div`
+  margin-left: 20px;
 `
 
 export { 
   PlayerContainer,
   PlayerInput,
-  PlayerLabel
+  PlayerLabel,
+  Text
 }

@@ -17,7 +17,7 @@ const Board = ({village}) => {
           direwolf={village.direwolf}
           specialWolves = {village.roleList.filter((role) =>
           role.roleType==='specialWerewolf')}
-          werewolves={village.werewolves - village.direwolf - village.specialWerewolves}
+          werewolves={village.werewolves}
           werewolfSupport={village.roleList.filter((role) =>
             role.roleType==='werewolfSupport')}/>
         <VillageTeam 

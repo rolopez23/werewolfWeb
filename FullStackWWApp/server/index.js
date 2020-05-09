@@ -27,7 +27,7 @@ app.get('/village/:players/:allowIndependants/:required', (req, res)=>{
   // console.log(requirements)
   const village = new Village(players, allowIndependants, requirements);
 
-  res.send(village);
+  res.send(village.getData());
 })
 
 app.get('/village/:players', (req, res)=>{

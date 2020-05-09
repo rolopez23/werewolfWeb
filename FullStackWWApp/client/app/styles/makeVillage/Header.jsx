@@ -12,11 +12,18 @@ const HeaderContainer = Styled.div`
   padding: 10px, 30px;
 `
 
+const ClickableArea = Styled.div`
+  display: flex;
+  flex-flow: row nowrap;  
+`
+
 const ClickableText = Styled.div`
-  cursor: ${props=> props.isPointer ? "pointer" : "auto"}
+  cursor: ${props=> props.isPointer ? "pointer" : "auto"};
+  margin-right: 20px;
 `
 
 export { 
+  ClickableArea,
   HeaderContainer,
   ClickableText
 }

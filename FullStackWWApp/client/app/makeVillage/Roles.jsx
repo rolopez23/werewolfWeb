@@ -20,10 +20,9 @@ class Roles extends Component {
 
     const {target} = e;
     const value = target.name === "allowIndependants" ? target.checked : target.value;
-    console.log(value)
     this.setState({
       [target.name]: value,
-    },()=>{console.log(this.state.allowIndependants)});
+    });
     if(target.name === 'team') {
       this.getRoles(value)
     }
@@ -62,17 +61,23 @@ class Roles extends Component {
     }
     if (send) {
       axios.get(`roles/${team}`)
+        .catch(error=> {
+          this.setState({
+            roles: [],
+            team: 'No Required Role',
+            role: null,
+          })
+        })
         .then(response => {
           this.setState({
             roles: response.data,
             role: response.data[0],
             teamSend: team,
           })
+          console.log(response.data)
+          this.props.update([team, response.data[0]])
         })
-      // .catch(this.setState({
-      //   team: 'No required Roles',
-      //   roles: null
-      // })) 
+
     }
   }
 
@@ -103,6 +108,12 @@ class Roles extends Component {
     return (
       <div>
         <div>Design your village!</div>
+        {/* <input 
+          type="checkbox" 
+          name="allowIndependants" 
+          value={allowIndependants}
+          onChange={this.handleChange}/> */}
+        {/* <label htmlFor="allowIndependants">Play with Independants?</label> */}
         <Select onChange={this.handleChange} name="team">
           <option>No Required Role</option>
           <option>Special Villagers</option>
@@ -111,12 +122,7 @@ class Roles extends Component {
           {independants}
         </Select>
         {secondSelect}
-        <input 
-          type="checkbox" 
-          name="allowIndependants" 
-          value={allowIndependants}
-          onChange={this.handleChange}/>
-        <label htmlFor="allowIndependants">Play with Independants?</label>
+       
 
       </div>
     )
