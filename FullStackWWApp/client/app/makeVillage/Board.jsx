@@ -1,5 +1,5 @@
 import React from 'react';
-import {BoardDiv} from '../styles/app.jsx';
+import {BoardDiv} from '../styles/App.jsx';
 import {NoVillage} from '../styles/Default.jsx';
 import WolfTeam from './Board/WolfTeam.jsx'
 import VillageTeam from './Board/VillageTeam.jsx'

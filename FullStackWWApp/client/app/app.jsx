@@ -1,5 +1,5 @@
 import React, {Component} from 'react';
-import {AppContainer} from './styles/app.jsx';
+import {AppContainer} from './styles/App.jsx';
 import Board from './makeVillage/Board.jsx'
 import Header from './makeVillage/Header.jsx'
 import Players from './makeVillage/Players.jsx'
