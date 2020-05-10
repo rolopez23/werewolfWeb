@@ -30,13 +30,12 @@ class App extends Component {
   }
 
   assignVillage() {
-    console.log('Building a village')
+
     let {playerList, players, village} = this.state;
-    console.log(playerList)
     if (players < playerList.length) {
       players = players.slice(0, number);
     }
-    
+
     for(let i = playerList.length; i < players; i++) {
       if (!playerList[i]) {
         playerList.push({
@@ -44,10 +43,14 @@ class App extends Component {
           name: '',
           role: '',
         })
-      }
+      } 
     }
 
-    let villageList = village.roleList;
+    // for(let i = 0; i < playerList.length; i++) {
+    //   playerList[i].role = '';
+    // }
+    // console.log('PlayerList', playerList)
+    let villageList = village.roleList.slice();
     for(let i = 0; i < village.villagers; i++) {
       villageList.push({roleName: 'Villager'})
     }
@@ -60,11 +63,10 @@ class App extends Component {
     let player = 0;
     while (villageList.length >= 1) {
       let index = Math.floor(Math.random() * villageList.length);
-      let role = villageList.pop(index)
+      let role = villageList.splice(index, 1)[0];
       playerList[player].role = role;
       player++;
     }
-    console.log(playerList)
     this.setState({playerList})
 
   }
@@ -96,7 +98,7 @@ class App extends Component {
 
   getVillage() {
     const {players, requiredRole} = this.state
-    console.log('click', requiredRole.length)
+    // console.log('click', requiredRole.length)
     if(requiredRole.length < 1) {
       axios.get(`/village/${players}`)
         .then(results=> {
@@ -107,7 +109,7 @@ class App extends Component {
           // console.log(results.data);
         })
         .then(()=>{
-          console.log('Making a village')
+          // console.log('Making a village')
           this.assignVillage();
       })
         .catch(error=>{console.error(error)})
