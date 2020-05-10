@@ -6,7 +6,7 @@ class Players extends Component {
   constructor(props) {
     super(props)
     this.state = {
-      players: 8
+      players: this.props.players,
     }
     this.handleChange = this.handleChange.bind(this);
   }

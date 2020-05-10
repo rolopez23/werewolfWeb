@@ -132,7 +132,7 @@ class App extends Component {
         getVillage={this.getVillage}
         isPointer={isPointer}
         view={this.toggleView}/>
-      {view === "village" ? <Players updatePlayers={this.updatePlayers}/> : null}
+      {view === "village" ? <Players players={players} updatePlayers={this.updatePlayers}/> : null}
       {view === "village" ? <Board village={village}/> : null}
       {view === "village" ? <Roles players={players} update={this.updateRequiredRole}/> : null}
       {view === "player" ? <PlayerList village={village} playerList ={playerList} update={this.updatePlayerList} count={players}/> : null}    
