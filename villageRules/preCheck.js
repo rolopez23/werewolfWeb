@@ -15,12 +15,11 @@ const isValidVillage = (roles, eyes) => {
   }
   const hasCorrectEyes = villageEyes === eyes;
   const hasCorrectSeer = requiresSeer > 0 === seer;
-  //Make sure there is not a seer and reactive seer
-  // const oneSeer = (roles.filter((role)=>role.rolename==='Seer')).length + (roles.filter((role)=>role.rolename==='Reactive Seer')).length !== 2;
+  const oneSeer = requiresSeer < 0 !== seer;
   const hasCorrectProtectors = protectors <= 1;
   // console.log(eyes, villageEyes, protectors, requiresSeer);
   // console.log(eyesTest, protectorTest, seerTest);
-  return hasCorrectEyes && hasCorrectSeer && hasCorrectProtectors;
+  return hasCorrectEyes && hasCorrectSeer && hasCorrectProtectors && oneSeer;
 };
 
 // export default isValidVillage;

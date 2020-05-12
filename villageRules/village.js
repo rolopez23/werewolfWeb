@@ -1,7 +1,7 @@
 // import roleList from '../currentRuleSets/roles.js';
 const roleList = require('../currentRuleSets/roles.js');
 const isValidVillage = require('./validVillage');
-const getRole = require('./getRole.js');
+const helpers = require('./helpers.js');
 
 
 // Creates a village taking in four variables, players is an int
@@ -33,31 +33,36 @@ class Village {
       this.thirdParty;
     // includes only optional roles.
     this.roleList = [];
+    this.requiredSpecials = [];
+    this.requiredSpecialWerewolves = [];
+    this.requiredWildcard = null; 
     this.allowIndependant = allowIndependants;
     // First add in new roles
-    // for (let i = 0; i < rolesIncluded.length; i++) {
-    //   // get role
-    //   let role = getRole(rolesIncluded[i][1], rolesIncluded[i][0]);
-    //   // place in bucket
-    //   let requiredSpecials = [];
-    //   let requiredSpecialWerewolves = [];
-    //   let requiredWildcard = null;
-    //   switch (role.roleType) {
-    //     case 'teamSwitcher':
-    //       requiredWildcard = role;
-    //       break;
-    //     case 'specialVillager':
-    //       requiredSpecials.push(role);
-    //       break;
-    //     case 'specialWerewolf':
-    //       requiredSpecialWerewolves.push(role);
-    //       break;
-    //     case 'werewolfSupport':
-    //       requiredWildcard = role;
-    //       break;
-    //   }
-      // return buckets
-    // }
+    for (let i = 0; i < rolesIncluded.length; i++) {
+      // get role
+      // console.log(rolesIncluded[i][0], rolesIncluded[i][1])
+      let role = helpers.role(rolesIncluded[i][0], rolesIncluded[i][1]);
+      // place in bucket
+      switch (role.roleType) {
+        case 'teamSwitcher':
+          this.requiredWildcard = role;
+          break;
+        case 'independant':
+          this.requiredWildcard = role;
+          break;
+        case 'specialVillager':
+          this.requiredSpecials.push(role);
+          break;
+        case 'specialWerewolf':
+          this.requiredSpecialWerewolves.push(role);
+          break;
+        case 'werewolfSupport':
+          this.requiredWildcard = role;
+          break;
+        case 'independant':
+          this.requiredWildcard = role;
+      }
+    }
 
     // Make roles invalid and generate village until
     this.valid = false;
@@ -65,14 +70,6 @@ class Village {
       let village = this.generateVillage();
       this.roleList = village;
       this.valid = isValidVillage(village, this.eyes);
-    }
-  }
-
-  randomVillage(eyes) {
-    let valid = false;
-    while (this.valid === false) {
-      let village = this.generateVillage();
-      valid = isValidVillage(village, eyes);
     }
   }
 
@@ -91,34 +88,52 @@ class Village {
 
   // Creates all roles for a village based on the current number
   // roles are objects
-  generateVillage(
-    requiredSpecials = [],
-    requiredSpecialWerewolves = [],
-    requiredWildcard = null,
-  ) {
+  generateVillage() {
     // Initiate everything to passed in values
     let wildcard = null;
-    let specials = requiredSpecials;
-    let specialWerewolves = requiredSpecialWerewolves;
+    let specials = [];
+    let specialWerewolves = [];
     let floatBucket = null;
 
     // Set wildcard to be teamSweitcher or werewolfSupport
     // based on village size
     if (this.thirdParty) {
+      if(this.allowIndependants) {
+        floatBucket === 'combined'
+      }
       floatBucket = 'teamSwitcher';
     } else if (this.werewolfSupport) {
       floatBucket = 'werewolfSupport';
     }
     // Add third team cases
-    if (floatBucket !== null) {
-      const options = roleList[floatBucket];
+
+    //If you have the role passed take it!
+    if(this.requiredWildcard) {
+      wildcard = this.requiredWildcard
+    } else if (floatBucket !== null) {
+      let options = null;
+      if (floatBucket === 'combined') {
+        options = roleList.independant.concat(roleList.teamSwitcher);
+      } else {
+        options = roleList[floatBucket];
+      }
       let index = Math.floor(Math.random() * options.length);
       wildcard = options[index];
     }
+    
     //pull role list
+    //Whenever you pull a role track its index to prevent duplicates
     const wolves = roleList.specialWerewolf;
     let indices = [];
-    for (let i = 0; i < this.specialWerewolves; i++) {
+    //Add in all the specialWerewolves
+    for (let i = 0; i < this.requiredSpecialWerewolves.length; i++) {
+      const wolf = this.requiredSpecialWerewolves[i];
+      indices.push(helpers.index('specialWerewolf',wolf.roleName))
+    }
+
+
+    //generate randomNumbers
+    for (let i = this.requiredSpecialWerewolves.length; i < this.specialWerewolves; i++) {
       let indexExists = true;
       while (indexExists) {
         let index = Math.floor(Math.random() * wolves.length);
@@ -128,13 +143,22 @@ class Village {
         }
       }
     }
+
     for (let i = 0; i < indices.length; i++) {
       specialWerewolves.push(wolves[indices[i]]);
     }
+    //reset indices
+    indices = [];
+
+    //Add in all the specialVillagers
+    for (let i = 0; i < this.requiredSpecials.length; i++) {
+      const role = this.requiredSpecials[i];
+      indices.push(helpers.index('specialVillager', role.roleName))
+    }
 
     const specialRoles = roleList.specialVillager;
-    indices = [];
-    for (let i = 0; i < this.specialVillagers; i++) {
+   
+    for (let i = this.requiredSpecials.length; i < this.specialVillagers; i++) {
       let indexExists = true;
       while (indexExists) {
         let index = Math.floor(Math.random() * specialRoles.length);
@@ -154,10 +178,8 @@ class Village {
   }
 }
 
-// let test = new Village(10);
-// // console.log(test);
+
 // console.log(test.roleList, typeof test)
-// // console.log(roleList.werewolfSupport);
 // let village = test.generateVillage();
 // console.log(isValidVillage(village, test.eyes));
 // console.log(test.specialWerewolves);

@@ -1,9 +1,9 @@
 import React from 'react';
-import {BoardDiv} from '../styles/app.jsx';
-import NoVillage from '../styles/Default.jsx';
+import {BoardDiv} from '../styles/App.jsx';
+import {NoVillage} from '../styles/Default.jsx';
 import WolfTeam from './Board/WolfTeam.jsx'
 import VillageTeam from './Board/VillageTeam.jsx'
-import BoardDisplay from '../styles/Board.jsx';
+import BoardDisplay from '../styles/makeVillage/Board.jsx';
 import Wildcard from './Board/Wildcard.jsx'
 
 const Board = ({village}) => {

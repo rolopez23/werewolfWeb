@@ -1,12 +1,12 @@
 import React, {Component} from 'react';
-import {PlayerContainer, PlayerInput, PlayerLabel} from '../styles/Players.jsx';
+import {PlayerContainer, PlayerInput, PlayerLabel} from '../styles/makeVillage/Players.jsx';
 
 
 class Players extends Component {
   constructor(props) {
     super(props)
     this.state = {
-      players: 8
+      players: this.props.players,
     }
     this.handleChange = this.handleChange.bind(this);
   }

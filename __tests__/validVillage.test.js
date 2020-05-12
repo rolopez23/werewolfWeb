@@ -1,4 +1,6 @@
 const validVillage = require('../villageRules/validVillage.js');
-const getRole = require('../villageRules/getRole.js');
 
+test('Sample',()=>{
+  expect(1).toBe(1);
+})
 

@@ -1,0 +1,30 @@
+{
+  "name": "werewolfweb",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "jest"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/rolopez23/werewolfWeb.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/rolopez23/werewolfWeb/issues"
+  },
+  "homepage": "https://github.com/rolopez23/werewolfWeb#readme",
+  "dependencies": {},
+  "devDependencies": {
+    "babel-jest": "^26.0.0",
+    "enzyme": "^3.11.0",
+    "enzyme-adapter-react-16": "^1.15.2",
+    "enzyme-to-json": "^3.4.4",
+    "jest": "^25.5.4",
+    "jest-environment-enzyme": "^7.1.2",
+    "jest-enzyme": "^7.1.2",
+    "react-test-renderer": "^16.13.1"
+  }
+}

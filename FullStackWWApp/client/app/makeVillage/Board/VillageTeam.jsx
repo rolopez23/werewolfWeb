@@ -1,5 +1,5 @@
 import React from 'react';
-import {VillageBox, VillageTitle} from '../../styles/Village.jsx'
+import {VillageBox, VillageTitle} from '../../styles/makeVillage/Village.jsx'
 
 const VillageTeam = ({wildcard, villagers, specialVillagers}) => (
   <VillageBox wildcard={wildcard}>
